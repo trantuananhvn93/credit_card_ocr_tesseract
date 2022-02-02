@@ -6,5 +6,4 @@ guide to install `Tesseract` [here](https://github.com/UB-Mannheim/tesseract/wik
 ### Image processing
 The souce codes and results can be found in `main.ipynb`
 
-![img](/mastercard.jpg)
 ![img](/img/tesseract.png)
