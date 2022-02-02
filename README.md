@@ -4,16 +4,19 @@ This is a hobby project  to develop a tool to read credit cards with Tesseract a
 ### Filtering image
 We can start with a mastercard photo, convert it to grayscale and fix its width to 666px
 ![gray](/img/gray.png)
+
 Then applying a `Top-Hat filter` to enhance bright objects of interest in a dark background.  It is useful in observing the minor details of the inputs when are present as light pixels on a dark background. 
 ```python
 tophat = cv2.morphologyEx(gray, cv2.MORPH_TOPHAT,sqKernel)
 ```
 ![gray](/img/tophat.png)
+
 Now we perform a binary and Otsu threshold to have a binary image
 ```python
 thresh = cv2.threshold(tophat, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 ```
 ![gray](/img/thresh.png)
+
 At this step, most of the noise has been filtered, but we need a few more steps to detect the location of relevant informations (digits , texts).
 We perform a `closing` transformation to detect lines of characters and a `opening` transformation to reduce noises. 
 ```python
